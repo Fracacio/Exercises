@@ -19,6 +19,11 @@ interface ConverteMaiusculas {
 	String converte(String f);
 }
 
+@FunctionalInterface
+interface VerificarPalindromo {
+	boolean verificaP(String p);
+}
+
 @SpringBootApplication
 public class FuncLambdaApplication {
 
@@ -35,6 +40,15 @@ public class FuncLambdaApplication {
 		// Question 3
 		ConverteMaiusculas converteMaiusculas = (f -> f.toUpperCase(Locale.ROOT));
 		System.out.println(converteMaiusculas.converte("cebola"));
+
+		// Question 4
+		VerificarPalindromo verificarPalindromo = (p -> {
+			String invertido = new StringBuilder(p).reverse().toString();
+            return p.equals(invertido);
+        });
+
+		System.out.println(verificarPalindromo.verificaP("arara"));
+		System.out.println(verificarPalindromo.verificaP("onibus"));
 	}
 
 }
