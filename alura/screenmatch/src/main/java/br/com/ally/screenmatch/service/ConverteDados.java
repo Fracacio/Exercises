@@ -1,6 +1,5 @@
 package br.com.ally.screenmatch.service;
 
-import br.com.ally.screenmatch.model.DadosSerie;
 import tools.jackson.core.JacksonException;
 import tools.jackson.databind.ObjectMapper;
 
