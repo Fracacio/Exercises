@@ -96,6 +96,10 @@ public class Principal {
                                 " Data lancamento: " + e.getDataLancamento().format(formatter)
                 ));
 
+        Map<Integer, Double> avaliacoesPorTemporada = episodios.stream()
+                .collect(Collectors.groupingBy(Episodio::getTemporada,
+                        Collectors.averagingDouble(Episodio::getAvaliacao)));
 
+        System.out.println(avaliacoesPorTemporada);
     }
 }
