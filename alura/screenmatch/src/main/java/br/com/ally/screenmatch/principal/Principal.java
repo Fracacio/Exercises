@@ -9,10 +9,7 @@ import br.com.ally.screenmatch.service.ConverteDados;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Principal {
@@ -75,6 +72,15 @@ public class Principal {
 
         episodios.forEach(System.out::println);
 
+        System.out.println("Diga o episodio que vc busca");
+        var trechoTitulo = scanner.nextLine();
+        Optional<Episodio> episodioBuscado = episodios.stream()
+                .filter(e -> e.getTitulo().toLowerCase().contains(trechoTitulo.toLowerCase()))
+                .findFirst();
+        if(episodioBuscado.isPresent()){
+            System.out.println("Episodio encontrado!" + episodioBuscado.get());
+        }
+
         System.out.println("A partir de qual ano voce deseja ver os episodios?");
         var ano = scanner.nextInt();
         scanner.nextLine();
@@ -89,5 +95,7 @@ public class Principal {
                                 " Episodio: " + e.getTitulo() +
                                 " Data lancamento: " + e.getDataLancamento().format(formatter)
                 ));
+
+
     }
 }
